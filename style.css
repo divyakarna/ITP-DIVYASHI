@@ -1,0 +1,668 @@
+/* ============================================= */
+/* GLOBAL STYLES & RESETS */
+/* ============================================= */
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; Include padding/borders in element dimensions */
+}
+
+/* Base font and colors */
+:root {
+  --primary-color: #2c3e50;    /* Dark blue */
+  --secondary-color: #f39c12;  /* Orange */
+  --accent-color: #e74c3c;     /* Red */
+  --light-bg: #f9f9f9;         /* Off-white background */
+  --text-color: #333;          /* Dark gray text */
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
+}
+
+/* Container for centered content with max-width */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Base typography styles */
+h1, h2, h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* ============================================= */
+/* HEADER & NAVIGATION STYLES */
+/* ============================================= */
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Branding area (logo + name) */
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-color);
+}
+
+.brand-name {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation icons */
+.nav-icons {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-icon {
+  color: var(--white);
+  font-size: 1.3rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-icon:hover {
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.nav-text {
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+/* Active page indicator */
+.nav-icon.active {
+  color: var(--secondary-color);
+}
+
+.nav-icon.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+}
+
+/* ============================================= */
+/* SLIDER COMPONENT STYLES */
+/* ============================================= */
+
+.slider {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.slides-container {
+  position: relative;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images cover area while maintaining aspect ratio */
+}
+
+/* Slider navigation buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: var(--white);
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.slider-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.prev-btn {
+  left: 20px;
+}
+
+.next-btn {
+  right: 20px;
+}
+
+/* ============================================= */
+/* CONTENT SECTION STYLES */
+/* ============================================= */
+
+/* Welcome section */
+.welcome-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.welcome-img:hover {
+  transform: scale(1.02);
+}
+
+/* Featured destinations section */
+.featured {
+  padding: 40px 0;
+  background-color: #ecf0f1;
+}
+
+.featured h2 {
+  text-align: center;
+}
+
+.featured-images {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  gap: 20px; /* Better than margin for consistent spacing */
+}
+
+.featured-item {
+  flex: 1 1 300px; /* Flexible items with minimum width */
+  text-align: center;
+}
+
+.featured-item img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.featured-item img:hover {
+  transform: scale(1.05);
+}
+
+.featured-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* ============================================= */
+/* FOOTER STYLES */
+/* ============================================= */
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* ============================================= */
+/* RESPONSIVE DESIGN BREAKPOINTS */
+/* ============================================= */
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 10px 5%;
+  }
+  
+  .brand-name {
+    font-size: 1.2rem;
+  }
+  
+  .nav-icons {
+    gap: 15px;
+  }
+  
+  .nav-icon {
+    font-size: 1.1rem;
+  }
+  
+  .slider {
+    height: 300px;
+  }
+  
+  .featured-item {
+    flex: 1 1 100%; /* Full width on smaller screens */
+  }
+}
+
+/* Small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  /* Simplify header for small screens */
+  .brand-name {
+    display: none;
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .nav-icon {
+    font-size: 1rem;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+  
+  /* Stack content sections vertically */
+  .featured-images {
+    flex-direction: column;
+  }
+}
+
+/* ============================================= */
+/* UTILITY CLASSES (can be used throughout) */
+/* ============================================= */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.hidden-mobile {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+/* ============================================= */
+/* CONTACT PAGE STYLES */
+/* ============================================= */
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.contact-info,
+.contact-form {
+  flex: 1 1 45%;
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.contact-info h2,
+.contact-form h2 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+.submit-btn {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #d78c0a;
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .contact-form {
+    flex: 1 1 100%;
+  }
+}
+/* ============================================= */
+/* TIMETABLE PAGE STYLES */
+/* ============================================= */
+
+.timetable {
+  margin-top: 30px;
+  overflow-x: auto;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.timetable table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.timetable th, .timetable td {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.timetable thead {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.timetable tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Season guide section */
+.season-guide {
+  margin-top: 50px;
+  background-color: #ecf0f1;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+.season-guide h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.season-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.season-card {
+  flex: 1 1 220px;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.season-card:hover {
+  transform: translateY(-5px);
+}
+
+.season-card h3 {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.season-card p {
+  color: var(--text-color);
+}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-item {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .grid-item p {
+      padding: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.03);
+    }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .season-cards {
+    flex-direction: column;
+  }
+
+  .season-card {
+    width: 100%;
+  }
+
+  .timetable table {
+    font-size: 0.95rem;
+  }
+}
+
+.featured-item a {
+  text-decoration: none; /* Removes underline */
+  color: inherit;         /* Inherits the color from the parent */
+  display: inline-block;  /* Makes the entire block clickable */
+  text-align: center;     /* Centers the text under the image */
+}
+
+.featured-item img {
+  border-radius: 10px;    /* Optional: makes image corners rounded */
+  transition: transform 0.3s ease; /* Optional: adds a hover effect */
+}
+
+.featured-item a:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* ============================================= */
+/* GALLERY CARD STYLING */
+/* ============================================= */
+
+.gallery-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.gallery-card:hover {
+  transform: scale(1.03);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+.back-button {
+  text-align: center;
+  margin: 30px;
+}
+
+.back-button a {
+  text-decoration: none;
+  background-color: #2c3e50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.back-button a:hover {
+  background-color: #34495e;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
